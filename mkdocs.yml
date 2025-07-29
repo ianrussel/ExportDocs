@@ -1,0 +1,11 @@
+site_name: B&F Papers
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Diagram: diagram.md
+  - Transformer: transformer.md
+
+plugins:
+  - search
+  - mermaid2
