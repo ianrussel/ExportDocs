@@ -1,6 +1,7 @@
 site_name: B&F Papers
 theme:
   name: material
+  custom_dir: overrides
 nav:
   - Home: index.md
   - Diagram: diagram.md
@@ -9,3 +10,7 @@ nav:
 plugins:
   - search
   - mermaid2
+
+extra:
+  author_name: B&F Papers
+  copyright_year: 2025
