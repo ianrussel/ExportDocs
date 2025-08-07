@@ -1,45 +1,45 @@
-### docs for Exporting from old mssql server(2014) to latest mssql server version# ExportDocs
+# ExportDocs
 
-This project implements a data integration pipeline designed to extract, transform, and load (ETL) data across two separate Microsoft SQL Server databases hosted in Azure. One database is a legacy system running on SQL Server 2014 and requires a Hybrid Connection for secure access. The other database resides on a modern SQL Server instance within Azure SQL Database.
+### docs for Exporting from old mssql server(2014) to latest mssql server version
 
-Workflow Overview:
-Data Source Access:
+# Project Summary: Hybrid Azure Data Integration and Synchronization
 
-Establish a Hybrid Connection to securely access the on-premises (or legacy-hosted) SQL Server 2014 database from Azure.
+This project implements a data integration pipeline designed to extract, transform, and load (ETL) data across two separate Microsoft SQL Server databases hosted in Azure. One database is a legacy system running on **SQL Server 2014** and requires a **Hybrid Connection** for secure access. The other database resides on a **modern SQL Server instance** within Azure SQL Database.
 
-Connect directly to the latest Azure-hosted SQL Server instance using standard SQL connectivity.
+## Workflow Overview
 
-Data Extraction:
+1. **Data Source Access**
 
-Retrieve required records from two source tables:
+   - Establish a **Hybrid Connection** to securely access the on-premises (or legacy-hosted) **SQL Server 2014** database from Azure.
+   - Connect directly to the latest Azure-hosted SQL Server instance using standard SQL connectivity.
 
-One from the modern database
+2. **Data Extraction**
 
-One from the legacy SQL 2014 database
+   - Retrieve required records from **two source tables**:
+     - One from the **modern database**
+     - One from the **legacy SQL 2014 database**
+   - Perform **joins** between these two tables to create a unified dataset based on shared keys or business logic.
 
-Perform joins between these two tables to create a unified dataset based on shared keys or business logic.
+3. **Data Filtering**
 
-Data Filtering:
+   - Use the joined result to **filter additional records** from a **third table** located in the **legacy database** (SQL Server 2014).
 
-Use the joined result to filter additional records from a third table located in the legacy database (SQL Server 2014).
+4. **Data Insertion**
 
-Data Insertion:
+   - Insert the filtered and processed records as **new entries** into a **target table** in the **modern SQL database**.
 
-The filtered and processed records are then inserted as new entries into a target table in the modern SQL database.
+## Key Technologies and Tools
 
-Key Technologies and Tools:
-Azure App Service (for hosting integration logic or middleware)
+- **Azure App Service** – for hosting integration logic or middleware
+- **Azure Hybrid Connections** – to securely access SQL Server 2014
+- **Python / .NET / Logic Apps / Data Factory** – for building and orchestrating the pipeline
+- **SQLAlchemy / pyodbc / ADO.NET** – for database interaction
+- **Stored Procedures / Views** – for query optimization (optional)
 
-Azure Hybrid Connections (for accessing the SQL Server 2014 instance)
+## Use Case
 
-Python / .NET / Logic Apps / Data Factory (depending on implementation language or tool)
+This architecture supports **gradual cloud migration**, allowing seamless integration between legacy systems and modern cloud infrastructure. It ensures **data consistency** and enables **centralized reporting or analytics** on the latest platform.
 
-SQLAlchemy / pyodbc / ADO.NET for database interaction
-
-Stored Procedures or Views (optional for optimization)
-
-Use Case:
-This architecture supports gradual cloud migration, allowing seamless integration between legacy systems and modern cloud infrastructure, ensuring data consistency and centralized reporting or analytics on the latest platform.
 
 ### Development
 
